@@ -396,7 +396,7 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
   line-height: 1.5;
 }
 .ownership-bullets li::before {
-  content: '4';
+  content: '→';
   position: absolute;
   left: 0;
   color: var(--accent);
@@ -517,7 +517,7 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
   line-height: 1.5;
 }
 .how-phase-items li::before {
-  content: '4';
+  content: '—';
   position: absolute;
   left: 0;
   color: var(--border);
@@ -574,6 +574,92 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
   margin-right: 4px;
 }
 
+/* PHASE TABLE */
+.phase-table-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.phase-table-row--last { border-bottom: none; }
+.phase-table-row--pending { border-bottom-color: #edf0ef; }
+.phase-table-left {
+  padding: 24px 24px 24px 20px;
+  border-right: 1px solid var(--border);
+  background: var(--off);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.phase-table-row--pending .phase-table-left {
+  background: #fafbfb;
+  border-right-color: #edf0ef;
+}
+.phase-table-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.phase-table-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.phase-table-row--pending .phase-table-name { color: var(--muted); font-weight: 500; }
+.phase-table-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 3px 9px;
+  background: rgba(0,194,168,0.08);
+  color: var(--accent);
+  border: 1px solid rgba(0,194,168,0.2);
+  width: fit-content;
+  margin-top: 2px;
+}
+.phase-table-badge--pending {
+  background: transparent;
+  color: var(--border);
+  border-color: var(--border);
+}
+.phase-table-right { padding: 24px 28px; }
+.phase-table-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+.phase-table-bullets li {
+  font-size: 13.5px;
+  color: var(--ink);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.6;
+}
+.phase-table-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 12px;
+}
+.phase-table-pending-text {
+  font-style: italic;
+  color: var(--border);
+  font-size: 13.5px;
+  margin: 0;
+  line-height: 1.6;
+  padding-top: 4px;
+}
+@media (max-width: 768px) {
+  .phase-table-row { grid-template-columns: 1fr; }
+  .phase-table-left { border-right: none; border-bottom: 1px solid var(--border); }
+}
+
 /* ENGAGEMENT PLACEHOLDER */
 .engagement-placeholder-box {
   border: 2px dashed var(--accent);
@@ -626,7 +712,7 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
     <div class="ownership-left">
       <div class="ownership-num">01</div>
       <div class="ownership-name">Cross-Site Leadership System</div>
-      <div class="ownership-outcome">Manufacturing leaders operate as one coordinated execution network</div>
+      <div class="ownership-outcome">Manufacturing leaders operate as one coordinated execution network, enabling faster decisions and consistent delivery across locations</div>
     </div>
     <div class="ownership-right">
       <div>
@@ -640,24 +726,19 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
       </div>
       <div>
         <div class="ownership-col-label">How we know it&rsquo;s working</div>
-        <table class="ownership-kpi-table">
-          <thead>
-            <tr><th>KPI</th><th>2026</th><th>2027</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Decision Speed</td><td>&le;5d</td><td>&le;48h</td></tr>
-            <tr><td>Ownership Level</td><td>&ge;3.5</td><td>&ge;4.2</td></tr>
-            <tr><td>Collaboration</td><td>&ge;3.5</td><td>&ge;4.0</td></tr>
-            <tr><td>Leader Maturity</td><td>&ge;3.0</td><td>&ge;4.0</td></tr>
-          </tbody>
-        </table>
+        <ul class="ownership-bullets">
+          <li>Decision Speed</li>
+          <li>Ownership Level</li>
+          <li>Collaboration Index</li>
+          <li>Leader Maturity</li>
+        </ul>
       </div>
     </div>
   </div>
   <div class="ownership-strip">
     <div class="ownership-strip-inner">
       <span class="ownership-strip-label">Measured via:</span>
-      <p>Structured 1:1 conversations scored 1&ndash;5 by the Transformation Lead. Consolidated quarterly per plant + network view.</p>
+      <p>Structured 1:1 conversations scored by the Transformation Lead, with input from CMO conversations and employee feedback channels &mdash; curated, traceable, and tied to actionable follow-ups.</p>
     </div>
   </div>
 </section>
@@ -668,7 +749,7 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
     <div class="ownership-left">
       <div class="ownership-num">02</div>
       <div class="ownership-name">Individual Capability Acceleration</div>
-      <div class="ownership-outcome">Employees become productive faster through scalable, technology-enabled learning</div>
+      <div class="ownership-outcome">Employees become productive faster through scalable, technology-enabled learning, supporting onboarding and continuous capability development</div>
     </div>
     <div class="ownership-right">
       <div>
@@ -682,16 +763,11 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
       </div>
       <div>
         <div class="ownership-col-label">How we know it&rsquo;s working</div>
-        <table class="ownership-kpi-table">
-          <thead>
-            <tr><th>KPI</th><th>2026</th><th>2027</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Time to Productivity</td><td>&le;10wks</td><td>&le;8wks</td></tr>
-            <tr><td>Ramp Delta</td><td>Valencia &lt; Athens</td><td>Warsaw &lt; Valencia</td></tr>
-            <tr><td>Throughput</td><td>&ge;80%</td><td>&ge;95%</td></tr>
-          </tbody>
-        </table>
+        <ul class="ownership-bullets">
+          <li>Time to Productivity</li>
+          <li>Ramp Delta</li>
+          <li>Throughput Capacity</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -716,23 +792,18 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
         <div class="ownership-col-label">What it covers</div>
         <ul class="ownership-bullets">
           <li>Cross-site Org Health Dashboard (leadership + workforce + delivery)</li>
-          <li>Organizational risk identification during ramp-up</li>
+          <li>Organizational risk identification during ramp-up and growth</li>
           <li>Cross-site experience exchange</li>
           <li>Quarterly review cycles with CMO</li>
         </ul>
       </div>
       <div>
         <div class="ownership-col-label">How we know it&rsquo;s working</div>
-        <table class="ownership-kpi-table">
-          <thead>
-            <tr><th>KPI</th><th>2026</th><th>2027</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Leadership Score</td><td>&#127761; all active</td><td>&#127762; all active</td></tr>
-            <tr><td>Workforce Readiness</td><td>&#127761; all active</td><td>&#127762; all active</td></tr>
-            <tr><td>Delivery</td><td>0 red sites</td><td>&#127762; all sites</td></tr>
-          </tbody>
-        </table>
+        <ul class="ownership-bullets">
+          <li>Leadership Score</li>
+          <li>Workforce Readiness</li>
+          <li>Delivery Performance</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -749,86 +820,62 @@ footer { background: var(--ink); padding: 40px 48px; border-top: 1px solid rgba(
   <div class="wrap">
     <div class="section-eyebrow reveal">Approach</div>
     <h2 class="reveal">How it happens.</h2>
-    <div class="how-phase-grid reveal">
-      <div class="how-phase-card">
-        <div class="how-phase-label">Phase 1</div>
-        <div class="how-phase-badge">May &ndash; July 2026</div>
-        <div class="how-phase-title">Diagnose &amp; Leadership System v1</div>
-        <ul class="how-phase-items">
-          <li>C-level + plant leader interviews</li>
-          <li>Shared leadership operating principles</li>
-          <li>Ownership, escalation &amp; project closure norms</li>
-          <li>Org Health Dashboard v1 (Helsinki data)</li>
-        </ul>
+    <div class="timeline-strip reveal" style="margin-top: 40px;">
+
+      <!-- ROW 1 — active -->
+      <div class="phase-table-row phase-table-row--active">
+        <div class="phase-table-left">
+          <div class="phase-table-label">Phase 1</div>
+          <div class="phase-table-name">Diagnose &amp; Build</div>
+          <div class="phase-table-badge">May &ndash; July 2026</div>
+        </div>
+        <div class="phase-table-right">
+          <ul class="phase-table-bullets">
+            <li>2 weeks in Helsinki &mdash; interviews across the org: plant leads, team leads, HQ stakeholders</li>
+            <li>Site visits to Athens and Valencia &mdash; observe operations, not just conversations</li>
+            <li>Map what exists: how decisions are made, how people ramp up, what gets escalated</li>
+            <li>Org Health Dashboard v1 &mdash; first snapshot of each active plant</li>
+            <li><strong>Deliverable:</strong> plant maturity map + prioritized intervention hypotheses</li>
+          </ul>
+        </div>
       </div>
-      <div class="how-phase-card">
-        <div class="how-phase-label">Phase 2</div>
-        <div class="how-phase-badge">July &ndash; August 2026</div>
-        <div class="how-phase-title">Quick Win &mdash; Athens</div>
-        <ul class="how-phase-items">
-          <li>Deploy onboarding framework in Athens</li>
-          <li>Measure time-to-productivity delta</li>
-          <li>First cross-site leadership forum</li>
-          <li>Org Health Dashboard &mdash; Athens data added</li>
-        </ul>
+
+      <!-- ROW 2 — pending -->
+      <div class="phase-table-row phase-table-row--pending">
+        <div class="phase-table-left">
+          <div class="phase-table-label">Phase 2</div>
+          <div class="phase-table-name">Quick Win &mdash; Athens</div>
+          <div class="phase-table-badge phase-table-badge--pending">Jul &ndash; Aug 2026</div>
+        </div>
+        <div class="phase-table-right">
+          <p class="phase-table-pending-text">Scope and target to be confirmed after Phase 1 diagnosis.</p>
+        </div>
       </div>
-      <div class="how-phase-card">
-        <div class="how-phase-label">Phase 3</div>
-        <div class="how-phase-badge">Sep &ndash; October 2026</div>
-        <div class="how-phase-title">Quick Win &mdash; Valencia</div>
-        <ul class="how-phase-items">
-          <li>Deploy playbook tested in Athens</li>
-          <li>Compare ramp time Athens vs Valencia</li>
-          <li>Playbook iteration v2</li>
-          <li>Org Health Dashboard &mdash; Valencia data added</li>
-        </ul>
+
+      <!-- ROW 3 — pending -->
+      <div class="phase-table-row phase-table-row--pending">
+        <div class="phase-table-left">
+          <div class="phase-table-label">Phase 3</div>
+          <div class="phase-table-name">Quick Win &mdash; Valencia</div>
+          <div class="phase-table-badge phase-table-badge--pending">Sep &ndash; Oct 2026</div>
+        </div>
+        <div class="phase-table-right">
+          <p class="phase-table-pending-text">Scope and target to be confirmed after Phase 1 diagnosis.</p>
+        </div>
       </div>
-      <div class="how-phase-card">
-        <div class="how-phase-label">Phase 4</div>
-        <div class="how-phase-badge">Nov &ndash; December 2026</div>
-        <div class="how-phase-title">Scale the System</div>
-        <ul class="how-phase-items">
-          <li>Warsaw first assessment + JV integration plan</li>
-          <li>Presencial cross-site leadership forum</li>
-          <li>Leadership Health Score v1</li>
-          <li>6M review with CMO + 2027 roadmap</li>
-        </ul>
+
+      <!-- ROW 4 — pending -->
+      <div class="phase-table-row phase-table-row--pending phase-table-row--last">
+        <div class="phase-table-left">
+          <div class="phase-table-label">Phase 4</div>
+          <div class="phase-table-name">Scale the System</div>
+          <div class="phase-table-badge phase-table-badge--pending">Nov &ndash; Dec 2026</div>
+        </div>
+        <div class="phase-table-right">
+          <p class="phase-table-pending-text">Scope and target to be confirmed after Phase 1 diagnosis.</p>
+        </div>
       </div>
-    </div>
-    <div class="timeline-strip reveal">
-      <div class="timeline-header">Field Calendar &mdash; May &rarr; December 2026</div>
-      <div class="timeline-row">
-        <div class="timeline-month">May</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Helsinki</span> &mdash; Onboarding &amp; C-level interviews, plant lead mapping</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">June</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Athens</span> &rarr; HQ &mdash; Immersion week, Org Health Dashboard v1, diagnostic to CMO</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">July</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Athens</span> &rarr; HQ &mdash; Onboarding framework v1 launch, cross-site forum design</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">August</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Valencia</span> &rarr; HQ &mdash; Pre-ramp assessment, Athens delta measurement, Q3 dashboard to CMO</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">September</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Valencia</span> &rarr; HQ &mdash; Ramp kick-off, presencial cross-site forum, playbook v2</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">October</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Warsaw</span> &rarr; HQ &mdash; First visit + assessment, Q4 plan alignment with CMO</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">November</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Athens or Valencia</span> &mdash; Follow-up, Leadership Health Score v1</div>
-      </div>
-      <div class="timeline-row">
-        <div class="timeline-month">December</div>
-        <div class="timeline-content"><div class="timeline-dot"></div><span class="timeline-city">Helsinki</span> &mdash; End-of-year review with CMO, 2027 plan + Phase 2 proposal</div>
-      </div>
+
     </div>
   </div>
 </section>
